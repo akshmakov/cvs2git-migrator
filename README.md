@@ -1,10 +1,26 @@
 # `cvs2git-migrator`
 
-This Project contains the cvs2git-migrator.sh script that is used to import and convert a CVS repository to a Git repository. CVS Repo can be local or remote with anonymous or password protected  access.
+This Project contains the cvs2git-migrator.sh script that is used to import and convert a CVS repository to a Git repository. CVS Repo can be local or remote with anonymous or password protected  access. 
+
+The import process retains history, most types of branching, commits, merges, etc. It also can map user names in CVS to their contemporary git handle using the cvs2git options file. This options file also allows fine grained control over the import process. 
+
+Example:
+
+```sh
+$ ./cvs2git-migrator.sh --options=./cvs2git-migrator-default.options --cvsroot=:pserver:anonymous@cvs.example.com:/cvsroot MY_MODULE
+$ cd mymodule-DATE-TIME/mymodule.git
+$ git add remote origin "https://github.com/user/repo" 
+$ git push -u origin --all
+$ git push -u origin --tags
+```
+
+For an example repository imported using this tool see https://github.com/akshmakov/expect-cvs-import
 
 This README provides setup and execution information.
 
-This Docker image cleanly encapsulates the environment needed for import, but it is not required, you may easily run the script by installing the requirements on your local system. 
+The Docker image (https://hub.docker.com/r/akshmakov/cvs2git-migrator) cleanly encapsulates the environment needed for import, but it is not required, you may easily run the script by installing the requirements on your local system. 
+
+
 
 
 ## Introduction ##
