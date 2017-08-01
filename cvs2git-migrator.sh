@@ -102,9 +102,9 @@ _OPTIONS_1="${HOME}/.cvs2git-migrator/cvs2git.options"
 _OPTIONS_2="/etc/cvs2git-migrator/cvs2git.options"
 
 if [[ -e $_OPTIONS_1 ]] ; then
-   OPTIONS = $_OPTIONS_1
+   OPTIONS= $_OPTIONS_1
 else
-   OPTIONS = $_OPTIONS_2
+   OPTIONS= $_OPTIONS_2
 fi
 
 OPTIONS=${CVS2GIT_OPTIONS-$OPTIONS}
