@@ -71,7 +71,7 @@ Usage: $PROGNAME [OPTIONS] module
     -n=/--no-cache : disable caching
     --cvspassword= : password to provide to cvs server
     --cache= cache dir (default ~/.cvs2git-migrator/cache)
-    --output= output directory (default: cwd )
+    --output= output directory (default: pwd )
     --verbose= verbose (extra messages)
 
   module: cvs module to submodule to import
@@ -100,7 +100,14 @@ CACHE=${CVS2GIT_CACHE_DIR-"${HOME}/.cvs2git-migrator/cache"}
 
 _OPTIONS_1="${HOME}/.cvs2git-migrator/cvs2git.options"
 _OPTIONS_2="/etc/cvs2git-migrator/cvs2git.options"
-OPTIONS=${CVS2GIT_OPTIONS-( if [[ -e $_OPTIONS_1 ]] ; then echo $_OPTIONS_1  ; else echo $_OPTIONS_2 ) }
+
+if [[ -e $_OPTIONS_1 ]] ; then
+   OPTIONS = $_OPTIONS_1
+else
+   OPTIONS = $_OPTIONS_2
+fi
+
+OPTIONS=${CVS2GIT_OPTIONS-$OPTIONS}
 	  
 MODULE=${CVS2GIT_MODULE-}
 
