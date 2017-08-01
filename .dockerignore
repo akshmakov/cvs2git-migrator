@@ -1,0 +1,5 @@
+*
+.git*
+!cvs2git-migrator.sh
+!external
+!cvs2git-migrator-default.options
